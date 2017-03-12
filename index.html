@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Pomodoro Clock by SzH</title>
+	<link rel="stylesheet" type="text/css" href="pomodoro.css">
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+	<meta charset="utf-8"/>
+</head>
+<body>
+<h1>Pomodoro Clock</h1>
+<div class="clock">
+
+	<div class="setter" id="setter_l">
+		<p>Session</p>
+		<input type="button" class="arrow" onclick='changeValue("lefele", "#session_time")' value="&#9660 " / >
+
+		<input type="text" id="session_time" value="25" readonly />
+
+		<input type="button" class="arrow" onclick='changeValue("felfele", "#session_time")' value="&#9650 " / >
+
+
+
+	</div>
+
+	<div class="setter" id="setter_r">
+	<p>Break</p>
+		<input type="button" class="arrow" onclick='changeValue("lefele", "#break_time")' value="&#9660 " / >
+
+		<input type="text" id="break_time" value="5" readonly />
+
+		<input type="button" class="arrow" onclick='changeValue("felfele", "#break_time")' value="&#9650 " / >
+
+	</div>
+
+
+	<div class="session">
+
+		<input type="button" id="play" class="buttons" value="&#9654" />
+		<input type="button" id="reset" class="buttons" value="&#8634" />
+
+		<div id="timer"> 
+
+			<input type="text" class="buttons" id="whichpart" value="" readonly />
+			<input type="text" class="buttons" id="minutes" value="" readonly /> :
+			<input type="text" class="buttons" id="seconds" value="" readonly />
+
+
+		 </div>
+
+
+		<input type="button" id="pause" class="buttons" value="&#9208" />
+		<input type="button" id="stop" class="buttons" value="&#9724" />
+
+	</div>
+	
+
+</div>
+
+
+<script type="text/javascript" src= "pomodoro1.js"></script>
+</body>
+</html>

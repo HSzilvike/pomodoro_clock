@@ -1,0 +1,123 @@
+body {
+
+	background-color: lightgrey;
+}
+
+
+h1 {
+
+text-align: center;
+
+}
+
+.clock {
+width: 500px;
+height: 500px;
+background-color: red;
+border-radius: 100%;
+margin: auto;
+position: relative;
+
+
+}
+
+
+	.setter {
+
+		
+		display: inline-block;
+		margin-top: 60px;
+		text-align: center;
+		width: 130px;
+
+	}
+
+	.arrow {
+
+		background-color: inherit;
+		border: none;
+		color: black;
+		font-size: 18px;
+
+	}
+
+			#setter_l {
+
+				float: left;
+				margin-left: 100px;
+				
+			}
+
+				#session_time {
+
+					width: 20px;
+					margin: 0px 10px 0px 10px;
+					display: inline-block;
+					background-color: inherit;
+					border: none;
+					color: black;
+					font-size: 18px;
+				}
+			
+
+			#setter_r {
+
+				float: right;
+				margin-right: 100px;
+			}
+
+			#break_time {
+
+					
+					width: 20px;
+					margin: 0px 10px 0px 10px;
+					display: inline-block;
+					background-color: inherit;
+					border: none;
+					color: black;
+					font-size: 18px;
+				}
+
+
+
+
+.session {
+
+width: 340px;
+height: 340px;
+border-radius: 100%;
+border: 2px solid darkgreen;
+position: absolute;
+bottom: 0;
+left: 78px;
+
+
+text-align: center;
+
+
+}
+
+	.buttons {
+
+		background-color: inherit;
+		border: none;
+		color: black;
+		font-size: 40px;
+		width: 167px;
+		border: 1px solid black;
+		margin-top: 30px;
+		text-align: center;
+
+	}
+
+	#whichpart {
+		width: 280px;
+
+
+	}
+
+	#minutes , #seconds {
+
+		width: 60px;
+	}
+
