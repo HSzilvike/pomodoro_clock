@@ -1,31 +1,12 @@
 $(document).ready (function() {
 
-$("#minutes").val($("#session_time").val());
+$("#minutes").val(('0'+($("#session_time").val())).slice(-2));
 $("#seconds").val('0'+0).slice(-2);
 
+$("#whichpart").val("Session");
 
 
-
-
-
-
-
-
-
-$("#play").on('click', function() {
-
-var timeInMinutes = $("#minutes").val();
-var timeInSeconds = $("#seconds").val();
-var currentTime = Date.parse(new Date());
-var deadline = new Date(currentTime + timeInMinutes*60*1000 + timeInSeconds*1000);
-
-initializeClock(deadline);
-
-});
-
-
-
-
+//$("#play").on('click', startagain());
 
 
 
@@ -48,11 +29,20 @@ var changeValue = function (change, whichtime) {
 				{currentTime--; };
 	};
 	$(whichtime).val(currentTime);
-	$("#minutes").val($("#session_time").val());
+	$("#minutes").val(('0'+($("#session_time").val())).slice(-2));
 };
 
 
 
+var startagain = function() {
+
+var timeInMinutes = $("#minutes").val();
+var timeInSeconds = $("#seconds").val();
+var currentTime = Date.parse(new Date());
+var deadline = new Date(currentTime + timeInMinutes*60*1000 + timeInSeconds*1000);
+
+initializeClock(deadline);
+};
 
 
 function getTimeRemaining(endtime){
@@ -78,14 +68,32 @@ function initializeClock(endtime){
     $("#seconds").val(('0'+t.seconds).slice(-2));
 
 
-    if(t.total<=0){
-      clearInterval(timeinterval);
+    if(t.total<=0) {
+    clearInterval(timeinterval);
+
+    	if($("#whichpart").val()=="Session") {
+    	$("#whichpart").val("Break");
+    	$("#minutes").val(('0'+($("#break_time").val())).slice(-2));
+      	$("#seconds").val('0'+0).slice(-2);
+      	startagain();
+    	}
+
+    	else {
+		$("#whichpart").val("Session");
+		$("#minutes").val(('0'+($("#session_time").val())).slice(-2));
+      	$("#seconds").val('0'+0).slice(-2);
+      	startagain();
+    	}
+
+      
+
     }
   },1000);
 
 $("#stop").on('click', function() {
 clearInterval(timeinterval);
-$("#minutes").val($("#session_time").val());
+$("#whichpart").val("Session");
+$("#minutes").val(('0'+($("#session_time").val())).slice(-2));
 $("#seconds").val('0'+0).slice(-2);
 });
 
@@ -96,9 +104,10 @@ clearInterval(timeinterval);
 
 $("#reset").on('click', function() {
 clearInterval(timeinterval);
+$("#whichpart").val("Session");
 $("#session_time").val(25);
 $("#break_time").val(5);
-$("#minutes").val($("#session_time").val());
+$("#minutes").val(('0'+($("#session_time").val())).slice(-2));
 $("#seconds").val('0'+0).slice(-2);
 });
 
