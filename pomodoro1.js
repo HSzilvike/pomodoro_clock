@@ -6,8 +6,6 @@ $("#seconds").val('0'+0).slice(-2);
 $("#whichpart").val("Session");
 
 
-//$("#play").on('click', startagain());
-
 
 
 });
@@ -41,6 +39,8 @@ var timeInSeconds = $("#seconds").val();
 var currentTime = Date.parse(new Date());
 var deadline = new Date(currentTime + timeInMinutes*60*1000 + timeInSeconds*1000);
 
+ $(".arrow").prop('disabled', true);
+
 initializeClock(deadline);
 };
 
@@ -68,6 +68,8 @@ function initializeClock(endtime){
     $("#seconds").val(('0'+t.seconds).slice(-2));
 
 
+    playSound(t.total);
+
     if(t.total<=0) {
     clearInterval(timeinterval);
 
@@ -90,27 +92,52 @@ function initializeClock(endtime){
     }
   },1000);
 
+
+
 $("#stop").on('click', function() {
 clearInterval(timeinterval);
+$("#audiofile").trigger('pause');
 $("#whichpart").val("Session");
 $("#minutes").val(('0'+($("#session_time").val())).slice(-2));
 $("#seconds").val('0'+0).slice(-2);
+$(".arrow").prop('disabled', false);
 });
 
 $("#pause").on('click', function() {
 clearInterval(timeinterval);
+$("#audiofile").trigger('pause');
 });
 
 
 $("#reset").on('click', function() {
 clearInterval(timeinterval);
+$("#audiofile").trigger('pause');
 $("#whichpart").val("Session");
 $("#session_time").val(25);
 $("#break_time").val(5);
 $("#minutes").val(('0'+($("#session_time").val())).slice(-2));
 $("#seconds").val('0'+0).slice(-2);
+$(".arrow").prop('disabled', false);
 });
 
 
 
+};
+
+var playSound = function (total){
+
+
+	if (total<=10000) {
+
+    	$("#audiofile").trigger('play');
+
+
+    };
+
+    if (total<=1) {
+
+    	$("#audiofile").trigger('pause');
+
+
+    };
 };
